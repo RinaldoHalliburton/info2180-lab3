@@ -15,6 +15,12 @@ function loadSquares() //function to load squares in board
     square.addEventListener('click', function() {
          handleSquareClick(square);
         });
+    square.addEventListener('mouseover',function(){
+        square.classList.add('hover');
+    })
+    square.addEventListener('mouseout',function(){
+        square.classList.remove('hover');
+    })
     });
 }
 
