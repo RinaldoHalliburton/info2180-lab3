@@ -1,3 +1,5 @@
+//ID Number: 620153775
+
 let gameState = Array(9).fill(null); //list that keeps track of gamestate
 let currentPlay = "X"; //initial move at start of game
 let winner = null;
@@ -8,6 +10,11 @@ document.addEventListener("DOMContentLoaded", loadSquares);
 function loadSquares() {
   //function to load squares in board
   const board = document.querySelectorAll("#board div");
+
+  // add action to button
+  P = document.getElementsByClassName("btn");
+  console.log(P);
+  P[0].addEventListener("click", resetGame);
 
   // Loop through each div in the board layout and add the 'square' class to each
   board.forEach(function (square) {
@@ -118,4 +125,18 @@ function checkDraw() {
   return gameState.every((cell) => cell !== null);
 }
 
-function resetBoard() {}
+function resetGame() {
+  gameState = Array(9).fill(null); // Reset the game state
+  currentPlay = "X"; // Reset to initial player
+  gameActive = true; // Set the game as active again
+  msg = "Move your mouse over a square and click to play an X or an O.";
+  element = document.getElementById("status"); //get div and remove class from it and chnage text inside to default text
+  element.classList.remove("status");
+  element.classList.remove("you-won");
+  element.innerHTML = msg;
+  const board = document.querySelectorAll("#board div");
+  board.forEach((square) => {
+    square.textContent = ""; // Clear the board visually
+    square.classList.remove("X", "O"); // Remove any classes from squares
+  });
+}
